@@ -15,7 +15,8 @@ ext.versions = [
         rxJava: '3.0.7',
         rxKotlin: '3.0.1',
         rxAndroid: '3.0.0',
-        retrofit2: '2.9.0'
+        retrofit2: '2.9.0',
+        dagger: '2.30.1'
 ]
 
 ext.libraries = [
@@ -30,7 +31,12 @@ ext.libraries = [
         rxAndroid: "io.reactivex.rxjava3:rxandroid:$versions.rxAndroid",
         retrofit2: "com.squareup.retrofit2:retrofit:$versions.retrofit2",
         retrofit2AdapterRxJava: "com.squareup.retrofit2:adapter-rxjava3:$versions.retrofit2",
-        retrofit2ConverterGson  : "com.squareup.retrofit2:converter-gson:$versions.retrofit2"
+        retrofit2ConverterGson  : "com.squareup.retrofit2:converter-gson:$versions.retrofit2",
+        dagger: "com.google.dagger:dagger:$versions.dagger",
+        daggerAndroid: "com.google.dagger:dagger-android:$versions.dagger",
+        daggerAndroidSupport: "com.google.dagger:dagger-android-support:$versions.dagger",
+        daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:$versions.dagger",
+        daggerCompiler: "com.google.dagger:dagger-compiler:$versions.dagger"
 ]
 
 ext.classpath = [

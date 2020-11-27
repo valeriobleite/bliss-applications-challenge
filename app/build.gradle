@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -13,8 +14,9 @@ android {
         targetSdkVersion rootProject.ext.versions.targetSdk
         versionCode rootProject.ext.versions.code
         versionName rootProject.ext.versions.name
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_GITHUB_API_URL", "\"https://api.github.com\"")
     }
 
     buildTypes {
@@ -33,12 +35,20 @@ android {
 }
 
 dependencies {
+    implementation project(":data")
+    implementation project(":domain")
 
     implementation rootProject.ext.libraries.kotlin
     implementation rootProject.ext.libraries.androidxCore
     implementation rootProject.ext.libraries.androidxAppCompat
     implementation rootProject.ext.libraries.material
     implementation rootProject.ext.libraries.constraintLayout
+
+    implementation rootProject.ext.libraries.dagger
+    implementation rootProject.ext.libraries.daggerAndroid
+    implementation rootProject.ext.libraries.daggerAndroidSupport
+    kapt rootProject.ext.libraries.daggerCompiler
+    kapt rootProject.ext.libraries.daggerAndroidProcessor
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
