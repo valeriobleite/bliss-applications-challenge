@@ -1,0 +1,27 @@
+ext.versions = [
+        minSdk: 24,
+        targetSdk: 30,
+        compileSdk: 30,
+        code: 1,
+        name: '1.0',
+
+        gradle: '4.1.1',
+        kotlin: '1.4.20',
+        androidx: '1.2.0',
+        androidxAppCompat: '1.2.0',
+        material: '1.2.1',
+        constraintLayout: '2.0.4'
+]
+
+ext.libraries = [
+        kotlin: "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
+        androidxCore: "androidx.core:core-ktx:$versions.androidx",
+        androidxAppCompat: "androidx.appcompat:appcompat:$versions.androidxAppCompat",
+        material: "com.google.android.material:material:$versions.material",
+        constraintLayout: "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
+]
+
+ext.classpath = [
+        gradle: "com.android.tools.build:gradle:$versions.gradle",
+        kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+]
