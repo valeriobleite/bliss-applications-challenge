@@ -10,7 +10,12 @@ ext.versions = [
         androidx: '1.2.0',
         androidxAppCompat: '1.2.0',
         material: '1.2.1',
-        constraintLayout: '2.0.4'
+        constraintLayout: '2.0.4',
+
+        rxJava: '3.0.7',
+        rxKotlin: '3.0.1',
+        rxAndroid: '3.0.0',
+        retrofit2: '2.9.0'
 ]
 
 ext.libraries = [
@@ -19,6 +24,13 @@ ext.libraries = [
         androidxAppCompat: "androidx.appcompat:appcompat:$versions.androidxAppCompat",
         material: "com.google.android.material:material:$versions.material",
         constraintLayout: "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
+
+        rxJava: "io.reactivex.rxjava3:rxjava:$versions.rxJava",
+        rxKotlin: "io.reactivex.rxjava3:rxkotlin:$versions.rxKotlin",
+        rxAndroid: "io.reactivex.rxjava3:rxandroid:$versions.rxAndroid",
+        retrofit2: "com.squareup.retrofit2:retrofit:$versions.retrofit2",
+        retrofit2AdapterRxJava: "com.squareup.retrofit2:adapter-rxjava3:$versions.retrofit2",
+        retrofit2ConverterGson  : "com.squareup.retrofit2:converter-gson:$versions.retrofit2"
 ]
 
 ext.classpath = [

@@ -9,5 +9,11 @@ java {
 }
 
 dependencies {
+    api rootProject.ext.libraries.rxJava
+    api rootProject.ext.libraries.rxKotlin
+    api rootProject.ext.libraries.rxAndroid
     implementation rootProject.ext.libraries.kotlin
+    implementation rootProject.ext.libraries.retrofit2
+    implementation rootProject.ext.libraries.retrofit2AdapterRxJava
+    implementation rootProject.ext.libraries.retrofit2ConverterGson
 }
