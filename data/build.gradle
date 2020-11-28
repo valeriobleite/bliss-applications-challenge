@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    api rootProject.ext.libraries.rxJava
+    api rootProject.ext.libraries.rxKotlin
+    api rootProject.ext.libraries.rxAndroid
+    implementation rootProject.ext.libraries.kotlin
+    implementation rootProject.ext.libraries.retrofit2
+    implementation rootProject.ext.libraries.retrofit2AdapterRxJava
+    implementation rootProject.ext.libraries.retrofit2ConverterGson
+}
