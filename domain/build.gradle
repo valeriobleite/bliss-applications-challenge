@@ -10,4 +10,6 @@ java {
 
 dependencies {
     implementation rootProject.ext.libraries.kotlin
+    implementation rootProject.ext.libraries.rxJava
+    implementation rootProject.ext.libraries.rxKotlin
 }

@@ -7,7 +7,7 @@ ext.versions = [
 
         gradle: '4.1.1',
         kotlin: '1.4.20',
-        androidx: '1.2.0',
+        androidx: '1.3.2',
         androidxAppCompat: '1.2.0',
         material: '1.2.1',
         constraintLayout: '2.0.4',
@@ -16,7 +16,8 @@ ext.versions = [
         rxKotlin: '3.0.1',
         rxAndroid: '3.0.0',
         retrofit2: '2.9.0',
-        dagger: '2.30.1'
+        dagger: '2.30.1',
+        lifeCycle: '2.2.0'
 ]
 
 ext.libraries = [
@@ -36,7 +37,9 @@ ext.libraries = [
         daggerAndroid: "com.google.dagger:dagger-android:$versions.dagger",
         daggerAndroidSupport: "com.google.dagger:dagger-android-support:$versions.dagger",
         daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:$versions.dagger",
-        daggerCompiler: "com.google.dagger:dagger-compiler:$versions.dagger"
+        daggerCompiler: "com.google.dagger:dagger-compiler:$versions.dagger",
+        liveData: "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifeCycle",
+        viewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifeCycle",
 ]
 
 ext.classpath = [
