@@ -7,10 +7,12 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import pt.leite.valerio.blissaplicationschallenge.di.modules.ViewModelModule
 import pt.leite.valerio.blissaplicationschallenge.di.utils.ViewModelKey
+import pt.leite.valerio.blissaplicationschallenge.usecases.AvatarUseCaseModule
 import pt.leite.valerio.blissaplicationschallenge.usecases.EmojiUseCaseModule
 
 @Module(includes = [
     EmojiUseCaseModule::class,
+    AvatarUseCaseModule::class,
     MainActivityModule.BindsModules::class
 ])
 class MainActivityModule {

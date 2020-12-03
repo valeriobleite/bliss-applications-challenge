@@ -11,6 +11,7 @@ ext.versions = [
         androidxAppCompat: '1.2.0',
         material: '1.2.1',
         constraintLayout: '2.0.4',
+        swipeRefreshLayout: '1.1.0',
 
         rxJava: '3.0.7',
         rxKotlin: '3.0.1',
@@ -31,6 +32,7 @@ ext.libraries = [
         androidxAppCompat: "androidx.appcompat:appcompat:$versions.androidxAppCompat",
         material: "com.google.android.material:material:$versions.material",
         constraintLayout: "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
+        swipeRefreshLayout: "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swipeRefreshLayout",
 
         rxJava: "io.reactivex.rxjava3:rxjava:$versions.rxJava",
         rxKotlin: "io.reactivex.rxjava3:rxkotlin:$versions.rxKotlin",

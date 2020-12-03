@@ -16,14 +16,32 @@ class MainActivity : BlissBaseActivity<MainActivityViewModel, MainActivityViewSt
 
         btnRandomEmoji.setOnClickListener { callIntent(MainActivityIntent.RandomIntent) }
         btnEmojiList.setOnClickListener { EmojiListActivity.startActivity(this) }
+        btnSearchAvatar.setOnClickListener { callIntent(MainActivityIntent.SearchIntent(etSearchAvatar.text.toString())) }
     }
 
     override fun viewModelClass() = MainActivityViewModel::class.java
 
     override fun render(viewState: MainActivityViewState) {
+        renderEmoji(viewState.emojiViewState)
+        renderAvatar(viewState.avatarViewState)
+    }
+
+    private fun renderEmoji(viewState: MainActivityViewState.EmojiViewState) {
         btnRandomEmoji.isEnabled = !viewState.isLoading
 
         viewState.emojiUI?.let {
+            ivEmoji.loadUrl(it.url)
+        }
+
+        viewState.error?.let {
+            Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun renderAvatar(viewState: MainActivityViewState.AvatarViewState) {
+        btnSearchAvatar.isEnabled = !viewState.isLoading
+
+        viewState.avatarUI?.let {
             ivEmoji.loadUrl(it.url)
         }
 

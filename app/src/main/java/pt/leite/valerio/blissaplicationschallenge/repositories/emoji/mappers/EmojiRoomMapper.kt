@@ -7,6 +7,5 @@ import pt.leite.valerio.domain.entities.EmojiEntity
 
 object EmojiRoomMapper: BaseMapperEntityToRoom<EmojiEntity, EmojiRoom>, BaseMapperRoomToEntity<EmojiRoom, EmojiEntity> {
     override fun toRoom(entity: EmojiEntity) = EmojiRoom(url = entity.url)
-
     override fun toEntity(room: EmojiRoom) = EmojiEntity(room.url)
 }
