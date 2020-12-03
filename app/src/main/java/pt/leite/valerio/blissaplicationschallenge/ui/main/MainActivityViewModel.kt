@@ -1,31 +1,49 @@
 package pt.leite.valerio.blissaplicationschallenge.ui.main
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.observers.DisposableSingleObserver
-import io.reactivex.rxjava3.schedulers.Schedulers
-import pt.leite.valerio.domain.entities.EmojiEntity
+import pt.leite.valerio.blissaplicationschallenge.ui.base.BlissBaseViewModel
+import pt.leite.valerio.blissaplicationschallenge.ui.main.mappers.EmojiUIMapper
+import pt.leite.valerio.blissaplicationschallenge.ui.main.models.EmojiUI
 import pt.leite.valerio.domain.usecases.EmojiUseCase
 import javax.inject.Inject
 
-class MainActivityViewModel @Inject constructor(private val emojiUseCase: EmojiUseCase): ViewModel() {
+class MainActivityViewModel @Inject constructor(private val emojiUseCase: EmojiUseCase): BlissBaseViewModel<MainActivityViewModel.ViewState, MainActivityViewModel.Intent>() {
 
-    fun random() {
-        Log.i("MainActivityViewModel","random()")
-        emojiUseCase.getEmojiList()
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : DisposableSingleObserver<List<EmojiEntity>>() {
-                override fun onSuccess(t: List<EmojiEntity>?) {
-                    Log.i("MainActivityViewModel","doOnSuccess()")
-                }
+    init {
+        viewState = ViewState()
+    }
 
-                override fun onError(e: Throwable?) {
-                    e?.printStackTrace()
-                    Log.i("MainActivityViewModel","doOnError()")
-                }
+    override fun process(intent: Intent) {
+        when(intent) {
+            Intent.RandomIntent -> random()
+        }
+    }
 
-            })
+    private fun random() {
+        callSingle(
+            emojiUseCase.getRandomEmoji(),
+            onLoading = { updateEmoji(true, null, null) },
+            onSuccess = { updateEmoji(false, EmojiUIMapper.toUI(it), null) },
+            onError = { updateEmoji(false, null, it) }
+        )
+    }
+
+    private fun updateEmoji(isLoading: Boolean, emojiUI: EmojiUI?, error: Throwable?) {
+        postValue(
+            viewState.copy(
+                isLoading = isLoading,
+                emojiUI = emojiUI,
+                error = error
+            )
+        )
+    }
+
+    data class ViewState(
+        val isLoading: Boolean = false,
+        val emojiUI: EmojiUI? = null,
+        val error: Throwable? = null
+    )
+
+    sealed class Intent {
+        object RandomIntent: Intent()
     }
 }

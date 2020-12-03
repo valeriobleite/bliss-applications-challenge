@@ -17,11 +17,11 @@ class MainActivityModule {
     @Module
     interface BindsModules {
         @Binds
-        fun appCompactActivity(mainActivity: MainActivity): AppCompatActivity
-
-        @Binds
         @IntoMap
         @ViewModelKey(MainActivityViewModel::class)
         fun bindMainActivityViewModel(viewModel: MainActivityViewModel): ViewModel
+
+        @Binds
+        fun appCompactActivity(mainActivity: MainActivity): AppCompatActivity
     }
 }

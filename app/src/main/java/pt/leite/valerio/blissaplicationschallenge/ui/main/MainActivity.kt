@@ -1,22 +1,21 @@
 package pt.leite.valerio.blissaplicationschallenge.ui.main
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import dagger.android.AndroidInjection
+import android.util.Log
 import pt.leite.valerio.blissaplicationschallenge.R
-import pt.leite.valerio.blissaplicationschallenge.ui.BlissBaseActivity
-import javax.inject.Inject
+import pt.leite.valerio.blissaplicationschallenge.ui.base.BlissBaseActivity
 
-class MainActivity : BlissBaseActivity<MainActivityViewModel>() {
-
-    override fun viewModelClass() = MainActivityViewModel::class.java
+class MainActivity : BlissBaseActivity<MainActivityViewModel, MainActivityViewModel.ViewState, MainActivityViewModel.Intent>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        callIntent(MainActivityViewModel.Intent.RandomIntent)
+    }
 
-        viewModel.random()
+    override fun viewModelClass() = MainActivityViewModel::class.java
+
+    override fun render(viewState: MainActivityViewModel.ViewState) {
+        Log.i("MainActivity::render", viewState.toString())
     }
 }

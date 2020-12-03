@@ -5,6 +5,12 @@ import pt.leite.valerio.domain.entities.EmojiEntity
 import pt.leite.valerio.domain.repositories.emoji.IEmojiRepository
 
 class EmojiUseCase(private val emojiRepository: IEmojiRepository) {
+    fun getRandomEmoji(): Single<EmojiEntity> {
+        return emojiRepository.getEmojiList().map {
+            it.random()
+        }
+    }
+
     fun getEmojiList(): Single<List<EmojiEntity>> {
         return emojiRepository.getEmojiList()
     }
