@@ -56,6 +56,8 @@ dependencies {
     implementation rootProject.ext.libraries.lifeCycleExtensions
     implementation rootProject.ext.libraries.activityKtx
     implementation rootProject.ext.libraries.fragmentKtx
+    implementation rootProject.ext.libraries.glide
+    kapt rootProject.ext.libraries.glideCompiler
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
