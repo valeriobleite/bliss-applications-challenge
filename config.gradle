@@ -20,7 +20,8 @@ ext.versions = [
         dagger: '2.30.1',
         lifeCycle: '2.2.0',
         activityKtx: '1.1.0',
-        fragmentKtx: '1.2.5'
+        fragmentKtx: '1.2.5',
+        room: '2.2.5'
 ]
 
 ext.libraries = [
@@ -49,6 +50,9 @@ ext.libraries = [
         lifeCycleExtensions: "androidx.lifecycle:lifecycle-extensions:$versions.lifeCycle",
         activityKtx: "androidx.activity:activity-ktx:$versions.activityKtx",
         fragmentKtx: "androidx.fragment:fragment-ktx:$versions.fragmentKtx",
+        room: "androidx.room:room-runtime:$versions.room",
+        roomCompiler: "androidx.room:room-compiler:$versions.room",
+        roomKtx: "androidx.room:room-ktx:$versions.room",
 ]
 
 ext.classpath = [
