@@ -18,7 +18,9 @@ ext.versions = [
         retrofit2: '2.9.0',
         jackson: '2.10.1',
         dagger: '2.30.1',
-        lifeCycle: '2.2.0'
+        lifeCycle: '2.2.0',
+        activityKtx: '1.1.0',
+        fragmentKtx: '1.2.5'
 ]
 
 ext.libraries = [
@@ -44,6 +46,9 @@ ext.libraries = [
         daggerCompiler: "com.google.dagger:dagger-compiler:$versions.dagger",
         liveData: "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifeCycle",
         viewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifeCycle",
+        lifeCycleExtensions: "androidx.lifecycle:lifecycle-extensions:$versions.lifeCycle",
+        activityKtx: "androidx.activity:activity-ktx:$versions.activityKtx",
+        fragmentKtx: "androidx.fragment:fragment-ktx:$versions.fragmentKtx",
 ]
 
 ext.classpath = [
