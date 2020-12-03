@@ -21,6 +21,10 @@ class EmojiListActivity : BlissBaseActivity<EmojiListActivityViewModel, EmojiLis
 
         callIntent(EmojiListActivityIntent.LoadListIntent)
 
+        srlEmojis.setOnRefreshListener {
+            callIntent(EmojiListActivityIntent.LoadListIntent)
+        }
+
         rvEmojis.layoutManager = GridLayoutManager(this, 4)
         rvEmojis.adapter = emojiItemAdapter
     }
@@ -28,7 +32,7 @@ class EmojiListActivity : BlissBaseActivity<EmojiListActivityViewModel, EmojiLis
     override fun viewModelClass() = EmojiListActivityViewModel::class.java
 
     override fun render(viewState: EmojiListActivityViewState) {
-        pbLoading.isVisible = viewState.isLoading
+        srlEmojis.isRefreshing = viewState.isLoading
 
         viewState.emojiUIList?.let {
             emojiItemAdapter.setItems(it)

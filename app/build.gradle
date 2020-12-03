@@ -45,6 +45,7 @@ dependencies {
     implementation rootProject.ext.libraries.androidxAppCompat
     implementation rootProject.ext.libraries.material
     implementation rootProject.ext.libraries.constraintLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     implementation rootProject.ext.libraries.dagger
     implementation rootProject.ext.libraries.daggerAndroid
