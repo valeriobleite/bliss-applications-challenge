@@ -50,7 +50,8 @@ class MainActivityViewModel @Inject constructor(
                     isLoading = isLoading,
                     emojiUI = emojiUI,
                     error = error
-                )
+                ),
+                avatarViewState = MainActivityViewState.AvatarViewState()
             )
         )
     }
@@ -58,6 +59,7 @@ class MainActivityViewModel @Inject constructor(
     private fun updateAvatar(isLoading: Boolean, avatarUI: AvatarUI?, error: Throwable?) {
         postValue(
             viewState.copy(
+                emojiViewState = MainActivityViewState.EmojiViewState(),
                 avatarViewState = viewState.avatarViewState.copy(
                     isLoading = isLoading,
                     avatarUI = avatarUI,
