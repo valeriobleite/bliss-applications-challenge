@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.leite.valerio.blissaplicationschallenge.R
+import pt.leite.valerio.blissaplicationschallenge.ui.avatar_list.AvatarListActivity
 import pt.leite.valerio.blissaplicationschallenge.ui.base.BlissBaseActivity
 import pt.leite.valerio.blissaplicationschallenge.ui.emoji_list.EmojiListActivity
 import pt.leite.valerio.blissaplicationschallenge.utils.loadUrl
@@ -17,6 +18,7 @@ class MainActivity : BlissBaseActivity<MainActivityViewModel, MainActivityViewSt
         btnRandomEmoji.setOnClickListener { callIntent(MainActivityIntent.RandomIntent) }
         btnEmojiList.setOnClickListener { EmojiListActivity.startActivity(this) }
         btnSearchAvatar.setOnClickListener { callIntent(MainActivityIntent.SearchIntent(etSearchAvatar.text.toString())) }
+        btnAvatarList.setOnClickListener { AvatarListActivity.startActivity(this) }
     }
 
     override fun viewModelClass() = MainActivityViewModel::class.java

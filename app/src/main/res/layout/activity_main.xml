@@ -59,6 +59,12 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAvatarList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/avatar_list" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.emoji_list.EmojiListActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.avatar_list.AvatarListActivity" android:screenOrientation="portrait" />
     </application>
 
 </manifest>

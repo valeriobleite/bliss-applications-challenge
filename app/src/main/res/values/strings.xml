@@ -3,4 +3,5 @@
 
     <string name="random_emoji">Random emoji</string>
     <string name="emoji_list">Emoji list</string>
+    <string name="avatar_list">Avatar list</string>
 </resources>
