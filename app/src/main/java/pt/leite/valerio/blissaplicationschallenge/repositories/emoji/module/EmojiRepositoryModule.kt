@@ -6,14 +6,14 @@ import pt.leite.valerio.blissaplicationschallenge.repositories.emoji.EmojiReposi
 import pt.leite.valerio.blissaplicationschallenge.repositories.emoji.LocalEmojiRepositoryImpl
 import pt.leite.valerio.data.local.IBlissDatabase
 import pt.leite.valerio.data.remote.client.IBlissHttpClient
-import pt.leite.valerio.domain.repositories.emoji.IEmojiRepository
-import pt.leite.valerio.domain.repositories.emoji.ILocalEmojiRepository
+import pt.leite.valerio.domain.repositories.emoji.EmojiRepository
+import pt.leite.valerio.domain.repositories.emoji.LocalEmojiRepository
 
 @Module
 class EmojiRepositoryModule {
     @Provides
-    fun provideEmojiRepository(client: IBlissHttpClient): IEmojiRepository = EmojiRepositoryImpl(client)
+    fun provideEmojiRepository(client: IBlissHttpClient): EmojiRepository = EmojiRepositoryImpl(client)
 
     @Provides
-    fun provideLocalEmojiRepository(database: IBlissDatabase): ILocalEmojiRepository = LocalEmojiRepositoryImpl(database)
+    fun provideLocalEmojiRepository(database: IBlissDatabase): LocalEmojiRepository = LocalEmojiRepositoryImpl(database)
 }
