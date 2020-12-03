@@ -24,13 +24,20 @@ abstract class BlissRecyclerViewAdapter<MODEL>(private val items: MutableList<MO
         if (notify) notifyDataSetChanged()
     }
 
-    fun removeItemAt(position: Int) {
+    fun removeItem(item: MODEL) {
+        val indexOfItem = this.items.indexOf(item)
+
+        if (indexOfItem != -1) {
+            removeItemAt(indexOfItem)
+        }
+    }
+
+    private fun removeItemAt(position: Int) {
         if (position >= 0) {
             this.items.removeAt(position)
             this.notifyItemRemoved(position)
         }
     }
-
 
     private fun clear(notify: Boolean = true) {
         items.clear()
