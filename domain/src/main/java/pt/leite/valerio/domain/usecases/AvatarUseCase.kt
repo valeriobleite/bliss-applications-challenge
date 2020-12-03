@@ -21,4 +21,6 @@ class AvatarUseCase(
             it
         }
     }
+
+    fun getAvatarList(): Single<List<AvatarEntity>> = Single.just(localAvatarRepository.getAll())
 }
