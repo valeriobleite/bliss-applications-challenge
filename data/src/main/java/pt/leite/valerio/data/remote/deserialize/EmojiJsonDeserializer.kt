@@ -10,7 +10,7 @@ class EmojiJsonDeserializer : StdDeserializer<EmojiResponse>(EmojiResponse::clas
     override fun deserialize(parser: JsonParser?, ctxt: DeserializationContext?): EmojiResponse {
         return EmojiResponse(
             parser?.codec?.readTree<JsonNode>(parser)?.map {
-                EmojiResponse.Emoji(it.toString())
+                EmojiResponse.Emoji(it.asText())
             } ?: listOf()
         )
     }

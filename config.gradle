@@ -21,7 +21,8 @@ ext.versions = [
         lifeCycle: '2.2.0',
         activityKtx: '1.1.0',
         fragmentKtx: '1.2.5',
-        room: '2.2.5'
+        room: '2.2.5',
+        glide: '4.11.0'
 ]
 
 ext.libraries = [
@@ -53,6 +54,8 @@ ext.libraries = [
         room: "androidx.room:room-runtime:$versions.room",
         roomCompiler: "androidx.room:room-compiler:$versions.room",
         roomKtx: "androidx.room:room-ktx:$versions.room",
+        glide: "com.github.bumptech.glide:glide:$versions.glide",
+        glideCompiler: "com.github.bumptech.glide:compiler:$versions.glide",
 ]
 
 ext.classpath = [
