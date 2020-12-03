@@ -16,9 +16,15 @@ class EmojiUseCase(
     }
 
     fun getEmojiList(): Single<List<EmojiEntity>> {
-        return emojiRepository.getEmojiList().map {
-            localEmojiRepository.saveAll(it)
-            it
+        val emojiList = localEmojiRepository.getAll()
+
+        return if (emojiList.isEmpty()) {
+            emojiRepository.getEmojiList().map {
+                localEmojiRepository.saveAll(it)
+                it
+            }
+        } else {
+            Single.just(emojiList)
         }
     }
 }

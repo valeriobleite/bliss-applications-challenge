@@ -9,4 +9,8 @@ class LocalEmojiRepositoryImpl(private val database: IBlissDatabase): ILocalEmoj
     override fun saveAll(emojiList: List<EmojiEntity>) {
         database.getRoom().emojiDao().insertAll(emojiList.map { EmojiRoomMapper.toRoom(it) })
     }
+
+    override fun getAll(): List<EmojiEntity> {
+        return database.getRoom().emojiDao().getAll().map { EmojiRoomMapper.toEntity(it) }
+    }
 }
