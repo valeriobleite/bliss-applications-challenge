@@ -1,5 +1,7 @@
 package pt.leite.valerio.blissaplicationschallenge.di.components
 
+import android.content.Context
+import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import pt.leite.valerio.blissaplicationschallenge.ui.BlissApplication
