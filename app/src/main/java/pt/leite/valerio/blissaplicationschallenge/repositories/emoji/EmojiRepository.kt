@@ -8,10 +8,8 @@ import pt.leite.valerio.domain.repositories.emoji.IEmojiRepository
 
 class EmojiRepository(private val client: IBlissHttpClient): IEmojiRepository {
     override fun getEmojiList(): Single<List<EmojiEntity>> {
-        return client.getGithubApi().getEmojiList().map { list ->
-            list.map {
-                EmojiContractMapper.toEntity(it)
-            }
+        return client.getGithubApi().getEmojiList().map {
+            EmojiContractMapper.toEntity(it)
         }
     }
 }
