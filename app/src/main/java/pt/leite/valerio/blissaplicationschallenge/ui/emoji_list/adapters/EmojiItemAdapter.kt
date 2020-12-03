@@ -18,6 +18,9 @@ class EmojiItemAdapter: BlissRecyclerViewAdapter<EmojiUI>() {
     inner class ViewHolder(private val view: EmojiItemView): RecyclerView.ViewHolder(view) {
         fun bind(emojiUI: EmojiUI) {
             view.loadUrl(emojiUI.url)
+            view.setOnClickListener {
+                removeItem(emojiUI)
+            }
         }
     }
 }
