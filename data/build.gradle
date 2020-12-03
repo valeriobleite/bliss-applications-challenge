@@ -15,5 +15,8 @@ dependencies {
     implementation rootProject.ext.libraries.kotlin
     implementation rootProject.ext.libraries.retrofit2
     implementation rootProject.ext.libraries.retrofit2AdapterRxJava
-    implementation rootProject.ext.libraries.retrofit2ConverterGson
+    implementation rootProject.ext.libraries.retrofit2ConverterJackson
+    implementation rootProject.ext.libraries.jacksonDatabind
+    implementation rootProject.ext.libraries.jacksonCore
+    implementation rootProject.ext.libraries.jacksonAnnotations
 }

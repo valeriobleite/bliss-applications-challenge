@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bliss Aplications - Challenge</string>
+
+    <string name="random_emoji">Random emoji</string>
 </resources>

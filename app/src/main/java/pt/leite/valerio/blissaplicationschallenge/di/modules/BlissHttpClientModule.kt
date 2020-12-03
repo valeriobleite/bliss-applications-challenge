@@ -1,4 +1,4 @@
-package pt.leite.valerio.blissaplicationschallenge.application.modules
+package pt.leite.valerio.blissaplicationschallenge.di.modules
 
 import dagger.Module
 import dagger.Provides
