@@ -1,5 +1,6 @@
 package pt.leite.valerio.domain.usecases
 
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import pt.leite.valerio.domain.entities.AvatarEntity
 import pt.leite.valerio.domain.repositories.avatar.AvatarRepository
@@ -23,4 +24,9 @@ class AvatarUseCase(
     }
 
     fun getAvatarList(): Single<List<AvatarEntity>> = Single.just(localAvatarRepository.getAll())
+
+    fun deleteAvatar(avatarEntity: AvatarEntity) = Completable.create {
+        localAvatarRepository.delete(avatarEntity)
+        it.onComplete()
+    }
 }

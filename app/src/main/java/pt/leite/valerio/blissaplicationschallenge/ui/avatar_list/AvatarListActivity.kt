@@ -10,10 +10,13 @@ import kotlinx.android.synthetic.main.activity_avatar_list.*
 import pt.leite.valerio.blissaplicationschallenge.R
 import pt.leite.valerio.blissaplicationschallenge.ui.avatar_list.adapters.AvatarItemAdapter
 import pt.leite.valerio.blissaplicationschallenge.ui.base.BlissBaseActivity
+import pt.leite.valerio.blissaplicationschallenge.ui.main.models.AvatarUI
 
-class AvatarListActivity : BlissBaseActivity<AvatarListActivityViewModel, AvatarListActivityViewState, AvatarListActivityIntent>() {
+class AvatarListActivity :
+    BlissBaseActivity<AvatarListActivityViewModel, AvatarListActivityViewState, AvatarListActivityIntent>(),
+    AvatarItemAdapter.Listener {
 
-    private val avatarItemAdapter by lazy { AvatarItemAdapter() }
+    private val avatarItemAdapter by lazy { AvatarItemAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,11 @@ class AvatarListActivity : BlissBaseActivity<AvatarListActivityViewModel, Avatar
     override fun viewModelClass() = AvatarListActivityViewModel::class.java
 
     override fun render(viewState: AvatarListActivityViewState) {
+        renderList(viewState.listState)
+        renderDelete(viewState.deleteState)
+    }
+
+    private fun renderList(viewState: AvatarListActivityViewState.ListState) {
         pgAvatars.isVisible = viewState.isLoading
         rvAvatars.isVisible = !viewState.isLoading
 
@@ -38,6 +46,20 @@ class AvatarListActivity : BlissBaseActivity<AvatarListActivityViewModel, Avatar
         viewState.error?.let {
             Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun renderDelete(viewState: AvatarListActivityViewState.DeleteState) {
+        viewState.avatarUI?.let {
+            avatarItemAdapter.removeItem(it)
+        }
+
+        viewState.error?.let {
+            Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onSelectedAvatar(avatarUI: AvatarUI) {
+        callIntent(AvatarListActivityIntent.DeleteIntent(avatarUI))
     }
 
     companion object {

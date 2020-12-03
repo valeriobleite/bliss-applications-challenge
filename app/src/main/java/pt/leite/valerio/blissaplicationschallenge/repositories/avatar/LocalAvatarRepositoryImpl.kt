@@ -10,6 +10,10 @@ class LocalAvatarRepositoryImpl(private val database: IBlissDatabase): LocalAvat
         database.getRoom().avatarDao().insert(AvatarRoomMapper.toRoom(avatar))
     }
 
+    override fun delete(avatar: AvatarEntity) {
+        database.getRoom().avatarDao().delete(AvatarRoomMapper.toRoom(avatar))
+    }
+
     override fun get(login: String): AvatarEntity? {
         database.getRoom().avatarDao().get(login)?.let {
             return AvatarRoomMapper.toEntity(it)

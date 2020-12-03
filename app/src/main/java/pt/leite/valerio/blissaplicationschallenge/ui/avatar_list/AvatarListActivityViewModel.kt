@@ -15,24 +15,48 @@ class AvatarListActivityViewModel @Inject constructor(private val avatarUseCase:
     override fun process(intent: AvatarListActivityIntent) {
         when(intent) {
             AvatarListActivityIntent.LoadListIntent -> getList()
+            is AvatarListActivityIntent.DeleteIntent -> delete(intent.avatarUI)
         }
     }
 
     private fun getList() {
         callSingle(
             avatarUseCase.getAvatarList(),
-            onLoading = { updateAvatar(true, null, null) },
-            onSuccess = { list -> updateAvatar(false, list.map { AvatarUIMapper.toUI(it) }, null) },
-            onError = { updateAvatar(false, null, it) }
+            onLoading = { updateList(true, null, null) },
+            onSuccess = { list -> updateList(false, list.map { AvatarUIMapper.toUI(it) }, null) },
+            onError = { updateList(false, null, it) }
         )
     }
 
-    private fun updateAvatar(isLoading: Boolean, avatarUIList: List<AvatarUI>?, error: Throwable?) {
+    private fun delete(avatarUI: AvatarUI) {
+        callCompletable(
+            avatarUseCase.deleteAvatar(AvatarUIMapper.toEntity(avatarUI)),
+            onSuccess = { updateDelete(avatarUI, null) },
+            onError = { updateDelete(null, it) }
+        )
+    }
+
+    private fun updateList(isLoading: Boolean, avatarUIList: List<AvatarUI>?, error: Throwable?) {
         postValue(
             viewState.copy(
-                isLoading = isLoading,
-                avatarUIList = avatarUIList,
-                error = error
+                listState = viewState.listState.copy(
+                    isLoading = isLoading,
+                    avatarUIList = avatarUIList,
+                    error = error
+                ),
+                deleteState = AvatarListActivityViewState.DeleteState()
+            )
+        )
+    }
+
+    private fun updateDelete(avatarUI: AvatarUI?, error: Throwable?) {
+        postValue(
+            viewState.copy(
+                listState = AvatarListActivityViewState.ListState(),
+                deleteState = viewState.deleteState.copy(
+                    avatarUI = avatarUI,
+                    error = error
+                )
             )
         )
     }
