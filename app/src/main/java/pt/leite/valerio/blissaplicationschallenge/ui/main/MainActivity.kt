@@ -5,6 +5,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.leite.valerio.blissaplicationschallenge.R
 import pt.leite.valerio.blissaplicationschallenge.ui.base.BlissBaseActivity
+import pt.leite.valerio.blissaplicationschallenge.ui.emoji_list.EmojiListActivity
 import pt.leite.valerio.blissaplicationschallenge.utils.loadUrl
 
 class MainActivity : BlissBaseActivity<MainActivityViewModel, MainActivityViewState, MainActivityIntent>() {
@@ -14,6 +15,7 @@ class MainActivity : BlissBaseActivity<MainActivityViewModel, MainActivityViewSt
         setContentView(R.layout.activity_main)
 
         btnRandomEmoji.setOnClickListener { callIntent(MainActivityIntent.RandomIntent) }
+        btnEmojiList.setOnClickListener { EmojiListActivity.startActivity(this) }
     }
 
     override fun viewModelClass() = MainActivityViewModel::class.java
