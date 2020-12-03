@@ -6,15 +6,15 @@ import pt.leite.valerio.blissaplicationschallenge.ui.main.models.EmojiUI
 import pt.leite.valerio.domain.usecases.EmojiUseCase
 import javax.inject.Inject
 
-class MainActivityViewModel @Inject constructor(private val emojiUseCase: EmojiUseCase): BlissBaseViewModel<MainActivityViewModel.ViewState, MainActivityViewModel.Intent>() {
+class MainActivityViewModel @Inject constructor(private val emojiUseCase: EmojiUseCase): BlissBaseViewModel<MainActivityViewState, MainActivityIntent>() {
 
     init {
-        viewState = ViewState()
+        viewState = MainActivityViewState()
     }
 
-    override fun process(intent: Intent) {
+    override fun process(intent: MainActivityIntent) {
         when(intent) {
-            Intent.RandomIntent -> random()
+            MainActivityIntent.RandomIntent -> random()
         }
     }
 
@@ -35,15 +35,5 @@ class MainActivityViewModel @Inject constructor(private val emojiUseCase: EmojiU
                 error = error
             )
         )
-    }
-
-    data class ViewState(
-        val isLoading: Boolean = false,
-        val emojiUI: EmojiUI? = null,
-        val error: Throwable? = null
-    )
-
-    sealed class Intent {
-        object RandomIntent: Intent()
     }
 }
