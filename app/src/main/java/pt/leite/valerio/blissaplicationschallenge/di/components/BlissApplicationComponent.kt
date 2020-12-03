@@ -1,11 +1,9 @@
 package pt.leite.valerio.blissaplicationschallenge.di.components
 
-import android.content.Context
-import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import pt.leite.valerio.blissaplicationschallenge.ui.BlissApplication
-import pt.leite.valerio.blissaplicationschallenge.di.modules.BlissApplicationModule
+import pt.leite.valerio.blissaplicationschallenge.ui.BlissApplicationModule
 import javax.inject.Singleton
 
 @Singleton

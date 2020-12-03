@@ -5,20 +5,22 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.leite.valerio.blissaplicationschallenge.R
 import pt.leite.valerio.blissaplicationschallenge.ui.base.BlissBaseActivity
+import pt.leite.valerio.blissaplicationschallenge.ui.emoji_list.EmojiListActivity
 import pt.leite.valerio.blissaplicationschallenge.utils.loadUrl
 
-class MainActivity : BlissBaseActivity<MainActivityViewModel, MainActivityViewModel.ViewState, MainActivityViewModel.Intent>() {
+class MainActivity : BlissBaseActivity<MainActivityViewModel, MainActivityViewState, MainActivityIntent>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnRandomEmoji.setOnClickListener { callIntent(MainActivityViewModel.Intent.RandomIntent) }
+        btnRandomEmoji.setOnClickListener { callIntent(MainActivityIntent.RandomIntent) }
+        btnEmojiList.setOnClickListener { EmojiListActivity.startActivity(this) }
     }
 
     override fun viewModelClass() = MainActivityViewModel::class.java
 
-    override fun render(viewState: MainActivityViewModel.ViewState) {
+    override fun render(viewState: MainActivityViewState) {
         btnRandomEmoji.isEnabled = !viewState.isLoading
 
         viewState.emojiUI?.let {
