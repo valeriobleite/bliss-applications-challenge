@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion rootProject.ext.versions.compileSdk
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.versions.minSdk
+        targetSdkVersion rootProject.ext.versions.targetSdk
+        versionCode rootProject.ext.versions.code
+        versionName rootProject.ext.versions.name
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    api rootProject.ext.libraries.rxJava
+    api rootProject.ext.libraries.rxKotlin
+    api rootProject.ext.libraries.rxAndroid
+    implementation rootProject.ext.libraries.kotlin
+    implementation rootProject.ext.libraries.retrofit2
+    implementation rootProject.ext.libraries.retrofit2AdapterRxJava
+    implementation rootProject.ext.libraries.retrofit2ConverterJackson
+    implementation rootProject.ext.libraries.jacksonDatabind
+    implementation rootProject.ext.libraries.jacksonCore
+    implementation rootProject.ext.libraries.jacksonAnnotations
+    api rootProject.ext.libraries.room
+    kapt rootProject.ext.libraries.roomCompiler
+    implementation rootProject.ext.libraries.roomKtx
+}

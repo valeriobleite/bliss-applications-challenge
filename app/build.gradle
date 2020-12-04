@@ -1,20 +1,24 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion rootProject.ext.versions.compileSdk
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "pt.leite.valerio.blissaplicationschallenge"
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion rootProject.ext.versions.minSdk
+        targetSdkVersion rootProject.ext.versions.targetSdk
+        versionCode rootProject.ext.versions.code
+        versionName rootProject.ext.versions.name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_GITHUB_API_URL", "\"https://api.github.com\"")
+        buildConfigField("String", "DATABASE_NAME", "\"bliss-challenge-database\"")
     }
 
     buildTypes {
@@ -33,12 +37,29 @@ android {
 }
 
 dependencies {
+    implementation project(":data")
+    implementation project(":domain")
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation rootProject.ext.libraries.kotlin
+    implementation rootProject.ext.libraries.androidxCore
+    implementation rootProject.ext.libraries.androidxAppCompat
+    implementation rootProject.ext.libraries.material
+    implementation rootProject.ext.libraries.constraintLayout
+    implementation rootProject.ext.libraries.swipeRefreshLayout
+
+    implementation rootProject.ext.libraries.dagger
+    implementation rootProject.ext.libraries.daggerAndroid
+    implementation rootProject.ext.libraries.daggerAndroidSupport
+    kapt rootProject.ext.libraries.daggerCompiler
+    kapt rootProject.ext.libraries.daggerAndroidProcessor
+    implementation rootProject.ext.libraries.liveData
+    implementation rootProject.ext.libraries.viewModel
+    implementation rootProject.ext.libraries.lifeCycleExtensions
+    implementation rootProject.ext.libraries.activityKtx
+    implementation rootProject.ext.libraries.fragmentKtx
+    implementation rootProject.ext.libraries.glide
+    kapt rootProject.ext.libraries.glideCompiler
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
