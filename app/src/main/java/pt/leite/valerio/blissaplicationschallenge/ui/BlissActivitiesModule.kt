@@ -8,6 +8,8 @@ import pt.leite.valerio.blissaplicationschallenge.ui.emoji_list.EmojiListActivit
 import pt.leite.valerio.blissaplicationschallenge.ui.emoji_list.EmojiListActivityModule
 import pt.leite.valerio.blissaplicationschallenge.ui.main.MainActivity
 import pt.leite.valerio.blissaplicationschallenge.ui.main.MainActivityModule
+import pt.leite.valerio.blissaplicationschallenge.ui.repos_list.RepoListActivity
+import pt.leite.valerio.blissaplicationschallenge.ui.repos_list.RepoListActivityModule
 
 @Module
 
@@ -21,4 +23,7 @@ abstract class BlissActivitiesModule {
 
     @ContributesAndroidInjector(modules = [AvatarListActivityModule::class])
     internal abstract fun avatarListActivityInjector(): AvatarListActivity
+
+    @ContributesAndroidInjector(modules = [RepoListActivityModule::class])
+    internal abstract fun repoListActivityInjector(): RepoListActivity
 }

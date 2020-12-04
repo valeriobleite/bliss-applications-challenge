@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".ui.emoji_list.EmojiListActivity" android:screenOrientation="portrait" />
         <activity android:name=".ui.avatar_list.AvatarListActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.repos_list.RepoListActivity" android:screenOrientation="portrait" />
     </application>
 
 </manifest>

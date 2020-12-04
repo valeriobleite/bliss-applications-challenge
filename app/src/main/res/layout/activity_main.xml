@@ -65,6 +65,12 @@
             android:layout_height="wrap_content"
             android:text="@string/avatar_list" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGoogleRepos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/google_repos" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

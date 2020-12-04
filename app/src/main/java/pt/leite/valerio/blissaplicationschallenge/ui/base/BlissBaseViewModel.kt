@@ -16,7 +16,7 @@ abstract class BlissBaseViewModel<VIEW_STATE, INTENT>: ViewModel() {
     private val disposable = CompositeDisposable()
 
     private val viewStateLiveData by lazy { MutableLiveData<VIEW_STATE>() }
-    protected var viewState: VIEW_STATE
+    var viewState: VIEW_STATE
         get() = viewStateLiveData.value ?: throw UninitializedPropertyAccessException("\"viewState\" was queried before being initialized")
         set(value) {
             viewStateLiveData.value = value
